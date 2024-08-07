@@ -104,16 +104,17 @@
             <div class="footer__left">
                 <div class="footer__main">
                     <div class="footer__title">
-                        WIKSI
-                        <ul class="footer__social-list">
+                        WIKSI                        <ul class="footer__social-list">
                             <li class="footer__social-item">
                                 <a href="https://t.me/wiksi_software" target="_blank">
-                                    <img src="kisspng-telegram-computer-icons-logo-social-media-5af2fe4b5021d3%201.svg" alt="" class="footer__social-img">
+                                    <img src="https://wildclient.org/assets/img/kisspng-telegram-computer-icons-logo-social-media-5af2fe4b5021d3%201.svg" alt="" class="footer__social-img">
                                 </a>
                             </li>
                             <li class="footer__social-item">
                                 <a href="https://dsc.gg/wiksi-software" target="_blank">
-                                    <img src="discord.svg" alt="" class="footer__social-img">
+                                    <img src="https://wildclient.org/assets/img/discord.svg" alt="" class="footer__social-img">
+                                </a>
+                            </li>
                                 </a>
                             </li>
                         </ul>
@@ -128,13 +129,22 @@
                 </div>
                 <nav class="footer__nav">
                     <ul class="footer__nav-site">
-                        <li class="footer__nav-title">Сайт</li>
+                        <li class="footer__nav-title">
+                            Сайт
+                            </a>
+                        </li>
                         <li class="footer__nav-item"><a href="https://dsc.gg/wiksi-software" class="footer__nav-link">Служба поддержки</a></li>
                         <li class="footer__nav-item"><a href="contact.html" class="footer__nav-link">Контакты</a></li>
                     </ul>
                     <ul class="footer__nav-main">
-                        <li class="footer__nav-title">Главная</li>
-                        <li class="footer__nav-item"><a href="#" class="footer__nav-link">Преимущества</a></li>
+                        <li class="footer__nav-title">
+                            Главная
+                        </li>
+                       <li class="footer__nav-item">
+                            <a href="#" class="footer__nav-link">
+                                Преимущества
+                            </a>
+                        </li>
                         <li class="footer__nav-item"><a href="#" class="footer__nav-link">Возможности</a></li>
                         <li class="footer__nav-item"><a href="#" class="footer__nav-link">Launcher</a></li>
                     </ul>
@@ -160,19 +170,20 @@
             formData.append('email', document.querySelector("#authEmail").value);
             formData.append('password', document.querySelector("#authPass").value);
             formData.append('cf-turnstile-response', document.querySelector("#authModal [name='cf-turnstile-response']").value);
-            fetch("https://wildclient.org/auth.php", {
-                method: "POST",
-                body: formData
+            fetch("https://wildclient.org/auth.php",
+            {
+              method: "POST",
+              body: formData
             })
-            .then(async function(res) {
-                const resText = await res.text();
-                if (resText === "") {
-                    loginErrorText.innerText = 'Неизвестная ошибка!';
-                } else if (resText === "OK") {
-                    location.href = 'https://wildclient.org/account';
-                } else {
-                    loginErrorText.innerText = resText;
-                }
+            .then(async function(res){
+              const resText = await res.text();
+              if (resText === ""){
+                loginErrorText.innerText = 'Неизвестная ошибка!';
+              } else if (resText === "OK"){
+                location.href = 'https://wildclient.org/account';
+              } else {
+                loginErrorText.innerText = resText;
+              }
             });
         });
 
@@ -184,20 +195,21 @@
             formData.append('login', document.querySelector("#regLogin").value);
             formData.append('password', document.querySelector("#regPass").value);
             formData.append('cf-turnstile-response', document.querySelector("#regModal [name='cf-turnstile-response']").value);
-            fetch("https://wildclient.org/auth.php", {
-                method: "POST",
-                body: formData
-            })
-            .then(async function(res) {
-                const resText = await res.text();
-                if (resText === "") {
+            fetch("https://wildclient.org/auth.php",
+                {
+                  method: "POST",
+                  body: formData
+                })
+                .then(async function(res){
+                  const resText = await res.text();
+                  if (resText === ""){
                     loginErrorText.innerText = 'Неизвестная ошибка!';
-                } else if (resText === "OK") {
+                  } else if (resText === "OK"){
                     location.href = 'https://wildclient.org/account';
-                } else {
+                  } else {
                     loginErrorText.innerText = resText;
-                }
-            });
+                  }
+                });
         });
 
         document.getElementById('btnReset').addEventListener("click", function() {
@@ -206,19 +218,20 @@
             formData.append('reset_password', '1');
             formData.append('email', document.querySelector("#resetEmail").value);
             formData.append('cf-turnstile-response', document.querySelector("#resetModal [name='cf-turnstile-response']").value);
-            fetch("https://wildclient.org/auth.php", {
-                method: "POST",
-                body: formData
+            fetch("https://wildclient.org/auth.php",
+            {
+              method: "POST",
+              body: formData
             })
-            .then(async function(res) {
-                const resText = await res.text();
-                if (resText === "") {
-                    loginErrorText.innerText = 'Неизвестная ошибка!';
-                } else if (resText === "OK") {
-                    loginErrorText.innerText = 'Письмо выслано на почту.';
-                } else {
-                    loginErrorText.innerText = resText;
-                }
+            .then(async function(res){
+              const resText = await res.text();
+              if (resText === ""){
+                loginErrorText.innerText = 'Неизвестная ошибка!';
+              } else if (resText === "OK"){
+                loginErrorText.innerText = 'Письмо выслано на почту.';
+              } else {
+                loginErrorText.innerText = resText;
+              }
             });
         });
     </script>
